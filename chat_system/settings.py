@@ -30,7 +30,7 @@ DEBUG = True
 
 ALLOWED_HOSTS = ['*']
 
-
+CSRF_TRUSTED_ORIGIN = ["https://chat-app-9tq4.onrender.com/"]
 # Application definition
 
 INSTALLED_APPS = [
