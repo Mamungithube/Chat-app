@@ -1,0 +1,69 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# C extensions
+*.so
+
+# Virtual environment
+env/
+venv/
+ENV/
+.venv/
+
+# Django stuff:
+*.log
+*.pot
+*.pyc
+*.pyo
+*.sqlite3
+db.sqlite3
+media/
+staticfiles/
+local_settings.py
+
+# DRF-related cache/migrations
+**/migrations/
+*.json
+
+# VS Code and PyCharm settings
+.vscode/
+.idea/
+
+# OS-specific files
+.DS_Store
+Thumbs.db
+
+# Pipenv
+Pipfile.lock
+
+# Environments
+.env
+*.env
+
+# Coverage and test results
+htmlcov/
+.coverage
+.tox/
+nosetests.xml
+coverage.xml
+*.cover
+.hypothesis/
+
+# Node modules (if you have frontend setup)
+node_modules/
+
+# Compiled static files (collected using collectstatic)
+static/
+
+# MyPy
+.mypy_cache/
+
+# Pytest
+.pytest_cache/
+
+# Docker
+*.pid
+*.bak
+*.swp
