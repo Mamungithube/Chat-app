@@ -25,7 +25,6 @@ class JWTAuthMiddleware:
         self.app = app
 
     async def __call__(self, scope, receive, send):
-        # Parse token from query string
         query_string = parse_qs(scope["query_string"].decode())
         token_key = query_string.get("token", [None])[0]
 

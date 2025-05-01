@@ -1,4 +1,4 @@
-# # update code solved
+# # code solved
 
 # import json
 # from channels.generic.websocket import WebsocketConsumer
@@ -73,7 +73,7 @@
 #         message = event['message']
 #         self.send(text_data=json.dumps({'message': message}))
 
-
+# personal send massage 
 
 import json
 from channels.generic.websocket import WebsocketConsumer
@@ -91,8 +91,6 @@ class ChatConsumer(WebsocketConsumer):
         if not self.user or not self.user.is_authenticated:
             self.close()
             return
-
-        # Store the user's channel name in cache
         cache.set(f'user_{self.user.id}_channel', self.channel_name, timeout=300)  # 5 minute timeout
 
         async_to_sync(self.channel_layer.group_add)(
@@ -107,7 +105,6 @@ class ChatConsumer(WebsocketConsumer):
         }))
 
     def disconnect(self, close_code):
-        # Remove the user's channel from cache when they disconnect
         if hasattr(self, 'user') and self.user.is_authenticated:
             cache.delete(f'user_{self.user.id}_channel')
         
@@ -133,18 +130,15 @@ class ChatConsumer(WebsocketConsumer):
                 self.send(text_data=json.dumps({'error': 'Receiver does not exist'}))
                 return
 
-            # Save the message to database
             Message.objects.create(
                 sender=self.user,
                 receiver=receiver,
                 content=message
             )
 
-            # Get the receiver's channel name from cache
             receiver_channel_name = cache.get(f'user_{receiver.id}_channel')
             
             if receiver_channel_name:
-                # Send directly to receiver's channel
                 async_to_sync(self.channel_layer.send)(
                     receiver_channel_name,
                     {
@@ -154,7 +148,6 @@ class ChatConsumer(WebsocketConsumer):
                     }
                 )
                 
-                # Also send to sender for their own UI
                 self.send(text_data=json.dumps({
                     'message': f"You to {receiver.username}: {message}",
                     'receiver_id': receiver.id
@@ -168,7 +161,6 @@ class ChatConsumer(WebsocketConsumer):
             self.send(text_data=json.dumps({'error': 'Invalid JSON'}))
 
     def private_message(self, event):
-        # Handle private messages received
         self.send(text_data=json.dumps({
             'message': event['message'],
             'sender_id': event['sender_id']
