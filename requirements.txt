@@ -95,8 +95,7 @@ python-dateutil
 python-dotenv 
 python-slugify 
 pytweening 
-pytz 
-pywin32 
+pytz
 PyYAML 
 pyzmq 
 ratelim 
