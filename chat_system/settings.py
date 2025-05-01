@@ -32,10 +32,10 @@ ALLOWED_HOSTS = [
     "https://chat-app-9tq4.onrender.com",
     "127.0.0.1",
     "localhost",
-    '.onrender.com',
 ]
 
-CSRF_TRUSTED_ORIGIN = ["https://chat-app-9tq4.onrender.com"]
+CSRF_TRUSTED_ORIGINS = ["https://chat-app-9tq4.onrender.com"]
+
 # Application definition
 
 INSTALLED_APPS = [
