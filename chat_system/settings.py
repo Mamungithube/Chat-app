@@ -29,12 +29,12 @@ SECRET_KEY = 'django-insecure-w85*7ad=3)kuvq(e8#)u#)rs3q1a1ej5!n&r=fdtv3+n41)z7p
 DEBUG = True
 
 ALLOWED_HOSTS = [
-    "https://chat-app-9tq4.onrender.com/",
+    "https://chat-app-9tq4.onrender.com",
     "127.0.0.1",
     "localhost",
 ]
 
-CSRF_TRUSTED_ORIGIN = ["https://chat-app-9tq4.onrender.com/"]
+CSRF_TRUSTED_ORIGIN = ["https://chat-app-9tq4.onrender.com"]
 # Application definition
 
 INSTALLED_APPS = [
