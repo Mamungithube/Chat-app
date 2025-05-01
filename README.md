@@ -28,5 +28,6 @@ A real-time chat application built with Django Channels and secured using JSON W
 ### 1. Clone the Repository
 
 ```bash
-git clone https://github.com/yourusername/django-chat-jwt.git
+git clone https://github.com/Mamungithube/Chat-app.git
 cd django-chat-jwt
+
