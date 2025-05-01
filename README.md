@@ -24,10 +24,21 @@ A real-time chat application built with Django Channels and secured using JSON W
 ---
 
 ## ⚙️ Setup Instructions
+#api setup
+user all api http://127.0.0.1:8000/authontication/user_all/
+register api http://127.0.0.1:8000/authontication/register/
+resend api http://127.0.0.1:8000/authontication/resend_otp/
+verify_otp api http://127.0.0.1:8000/authontication/verify_otp/
+login api http://127.0.0.1:8000/authontication/login/
+logout api http://127.0.0.1:8000/authontication/logout/
+refesh token api http://127.0.0.1:8000/authontication/token/refresh/
 
+chat channal api ws://localhost:8000/ws/chat/room1/?token=access token name when login
 ### 1. Clone the Repository
 
 ```bash
 git clone https://github.com/Mamungithube/Chat-app.git
 cd django-chat-jwt
+
+
 
