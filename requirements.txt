@@ -116,7 +116,6 @@ text-unidecode
 tornado 
 tqdm 
 traitlets 
-turtle 
 Twisted 
 txaio 
 typing_extensions 
