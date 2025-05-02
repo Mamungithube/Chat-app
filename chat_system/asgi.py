@@ -32,7 +32,7 @@ django.setup()
 # })
 
 
-# update
+# update code 
 
 application = ProtocolTypeRouter({
     "http": get_asgi_application(),
