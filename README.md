@@ -35,11 +35,11 @@ api setup
 - refesh token api https://chat-app-9tq4.onrender.com/authontication/token/refresh/
 
 - chat channal api ws://localhost:8000/ws/chat/room1/?token=access token name when login
+- Render not supportet web shocket in Free plan But locally connect and work...
 ### 1. Clone the Repository
 
 ```bash
 git clone https://github.com/Mamungithube/Chat-app.git
-cd django-chat-jwt
 
 
 
