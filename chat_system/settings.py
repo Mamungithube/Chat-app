@@ -28,12 +28,14 @@ SECRET_KEY = 'django-insecure-w85*7ad=3)kuvq(e8#)u#)rs3q1a1ej5!n&r=fdtv3+n41)z7p
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['*']
-CSRF_TRUSTED_ORIGINS = ['https://chat-app-9tq4.onrender.com','https://*.127.0.0.1']
+
+ALLOWED_HOSTS = ["127.0.0.1", ".vercel.app"]
+
 CORS_ALLOW_CREDENTIALS = True
 # Application definition
 
 INSTALLED_APPS = [
+    'whitenoise.runserver_nostatic',
     'rest_framework',
     'rest_framework.authtoken',
     'rest_framework_simplejwt',
@@ -185,7 +187,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/5.0/howto/static-files/
 
 STATIC_URL = 'static/'
-
+STATIC_ROOT = BASE_DIR / 'staticfiles'
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
 
