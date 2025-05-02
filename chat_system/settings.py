@@ -30,7 +30,7 @@ DEBUG = True
 ALLOWED_HOSTS = ["*"]
 
 # ALLOWED_HOSTS = ["127.0.0.1", ".vercel.app"]
-
+CSRF_TRUSTED_ORIGINS = ['https://chat-app-9tq4.onrender.com','https://*.127.0.0.1']
 CORS_ALLOW_CREDENTIALS = True
 # Application definition
 
