@@ -26,15 +26,15 @@ A real-time chat application built with Django Channels and secured using JSON W
 ## ⚙️ Setup Instructions
 api setup
 - live link ----> https://chat-app-9tq4.onrender.com
-user all api https://chat-app-9tq4.onrender.com/authontication/user_all/
-register api https://chat-app-9tq4.onrender.com/authontication/register/
-resend api https://chat-app-9tq4.onrender.com/authontication/resend_otp/
-verify_otp api https://chat-app-9tq4.onrender.com/authontication/verify_otp/
-login api https://chat-app-9tq4.onrender.com/authontication/login/
-logout api https://chat-app-9tq4.onrender.com/authontication/logout/
-refesh token api https://chat-app-9tq4.onrender.com/authontication/token/refresh/
+- user all api https://chat-app-9tq4.onrender.com/authontication/user_all/
+- register api https://chat-app-9tq4.onrender.com/authontication/register/
+- resend api https://chat-app-9tq4.onrender.com/authontication/resend_otp/
+- verify_otp api https://chat-app-9tq4.onrender.com/authontication/verify_otp/
+- login api https://chat-app-9tq4.onrender.com/authontication/login/
+- logout api https://chat-app-9tq4.onrender.com/authontication/logout/
+- refesh token api https://chat-app-9tq4.onrender.com/authontication/token/refresh/
 
-chat channal api ws://localhost:8000/ws/chat/room1/?token=access token name when login
+- chat channal api ws://localhost:8000/ws/chat/room1/?token=access token name when login
 ### 1. Clone the Repository
 
 ```bash
