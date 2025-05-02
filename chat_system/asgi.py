@@ -31,7 +31,7 @@ django.setup()
 #     ),
 # })
 
-
+app = application
 # update code 
 
 application = ProtocolTypeRouter({
