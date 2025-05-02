@@ -31,7 +31,7 @@ django.setup()
 #     ),
 # })
 
-app = application
+
 # update code 
 
 application = ProtocolTypeRouter({
@@ -40,3 +40,4 @@ application = ProtocolTypeRouter({
         URLRouter(websocket_urlpatterns)
     ),
 })
+app = application
