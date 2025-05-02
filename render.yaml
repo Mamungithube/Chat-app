@@ -3,7 +3,7 @@ services:
     name: chat-app
     env: python
     buildCommand: "pip install -r requirements.txt"
-    startCommand: "daphne -b 0.0.0.0 -p 8000 chat_system.asgi:application"
+    startCommand: "daphne chat_system.asgi:application --port $PORT --bind 0.0.0.0"
     envVars:
       - key: DJANGO_SETTINGS_MODULE
         value: chat_system.settings
