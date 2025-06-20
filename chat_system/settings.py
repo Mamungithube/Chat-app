@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'daphne',
     'channels',
     'chat',
+    'notifications',
     'corsheaders',
     'authontication',
     'django.contrib.admin',
@@ -112,20 +113,13 @@ TEMPLATES = [
 ]
 
 ASGI_APPLICATION = 'chat_system.asgi.application'
-# CHANNEL_LAYERS = {
-#     "default": {
-#         "BACKEND": "channels_redis.core.RedisChannelLayer",
-#         "CONFIG": {
-#             "hosts": [("127.0.0.1", 6379)],
-#         },
-#     },
-# }
 import os
+
 CHANNEL_LAYERS = {
     "default": {
         "BACKEND": "channels_redis.core.RedisChannelLayer",
         "CONFIG": {
-            "hosts": [os.environ.get("REDIS_URL", "redis://localhost:6379")],  # Render-এর Redis URL ব্যবহার করুন
+            "hosts": [("redis", 6379)],  # 👈 ঠিক Redis service নাম
         },
     },
 }
