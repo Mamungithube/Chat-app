@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'daphne',
     'channels',
     'chat',
+    'chatbot_intigration',
     'ai_intrigation',
     'notifications',
     'corsheaders',
