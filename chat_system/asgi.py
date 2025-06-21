@@ -24,15 +24,6 @@ from chat.middleware import JWTAuthMiddleware
 os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'chat_system.settings')
 django.setup()
 
-# application = ProtocolTypeRouter({
-#     "http": get_asgi_application(),
-#     "websocket": AuthMiddlewareStack(
-#         URLRouter(websocket_urlpatterns)
-#     ),
-# })
-
-
-# update code 
 
 application = ProtocolTypeRouter({
     "http": get_asgi_application(),

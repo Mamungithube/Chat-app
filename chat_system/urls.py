@@ -23,7 +23,8 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('authontication/', include('authontication.urls')),
     path('',include('chat.urls')),
-    path('',include('notifications.urls'))
+    path('',include('notifications.urls')),
+    path('',include('ai_intrigation.urls')),
     
 ]
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)  
