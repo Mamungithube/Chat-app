@@ -1,45 +1,34 @@
 FROM python:3.10-slim
 
+# Set working directory
 WORKDIR /app
 
-# pip আপডেট করুন
-RUN pip install --upgrade pip
+# ✅ System-level dependencies to build mysqlclient
+RUN apt-get update && apt-get install -y \
+    gcc \
+    g++ \
+    libmariadb-dev \
+    libssl-dev \
+    default-libmysqlclient-dev \
+    libpq-dev \
+    pkg-config \
+    python3-dev \
+    build-essential \
+    && rm -rf /var/lib/apt/lists/*
 
-# প্রথমে numpy আলাদাভাবে ইনস্টল করুন
+# ✅ Install pip build tools
+RUN pip install --upgrade pip setuptools wheel
+
+# ✅ Numpy fix (if needed)
 RUN pip install numpy==1.26.4
 
-# বাকি প্যাকেজেস
+# ✅ Install Python requirements
 COPY requirements.txt .
 RUN pip install --no-cache-dir -r requirements.txt
+
+# ✅ Copy other files
 COPY ai_intrigation/pipeline_lg.joblib /app/ai_intrigation/pipeline_lg.joblib
 COPY . .
 
-
+# ✅ Run the app
 CMD ["python", "manage.py", "runserver", "0.0.0.0:8000"]
-
-
-
-# FROM python:3.10-slim
-
-# # Set working directory
-# WORKDIR /app
-
-# # Install system dependencies needed for mysqlclient
-# RUN apt-get update && apt-get install -y \
-#     gcc \
-#     default-libmysqlclient-dev \
-#     pkg-config \
-#     && apt-get clean
-
-# # Install Python dependencies
-# COPY requirements.txt .
-# RUN pip install --no-cache-dir -r requirements.txt
-
-# # Copy project files
-# COPY . .
-# COPY ai_intrigation/model.joblib /app/ai_intrigation/model.joblib
-# # Collect static files (optional)
-# RUN python manage.py collectstatic --noinput
-
-# # Run with Daphne for WebSocket support
-# CMD ["daphne", "-b", "0.0.0.0", "-p", "8000", "chat_system.asgi:application"]

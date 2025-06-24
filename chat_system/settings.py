@@ -115,7 +115,7 @@ TEMPLATES = [
 ]
 
 ASGI_APPLICATION = 'chat_system.asgi.application'
-import os
+
 
 CHANNEL_LAYERS = {
     "default": {

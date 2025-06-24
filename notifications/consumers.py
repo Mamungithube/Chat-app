@@ -1,6 +1,8 @@
 # consumers.py
 from channels.generic.websocket import AsyncJsonWebsocketConsumer
 from channels.db import database_sync_to_async
+import json
+from .models import Notification
 
 class GlobalNotificationConsumer(AsyncJsonWebsocketConsumer):
     async def connect(self):
@@ -13,7 +15,20 @@ class GlobalNotificationConsumer(AsyncJsonWebsocketConsumer):
             self.group_name = "global_notifications"
             await self.channel_layer.group_add(self.group_name, self.channel_name)
             await self.accept()
+        
+    @database_sync_to_async
+    def save_notification(self, user, message):
+        """Save notification to database synchronously"""
+        Notification.objects.create(
+            user=user,
+            message=message
+        )
 
+
+
+    async def receive(self, text_data=None, bytes_data=None, **kwargs):
+        pass
+        
     async def disconnect(self, close_code):
         if hasattr(self, 'group_name'):
             await self.channel_layer.group_discard(
@@ -22,4 +37,8 @@ class GlobalNotificationConsumer(AsyncJsonWebsocketConsumer):
             )
 
     async def send_notification(self, event):
-        await self.send_json(event["content"])
+        try:
+            content = event.get("content", {})
+            await self.send_json(content)
+        except Exception as e:
+            print("Send error:", e)

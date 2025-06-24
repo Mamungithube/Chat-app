@@ -3,7 +3,13 @@ from channels.db import database_sync_to_async
 from django.contrib.auth import get_user_model
 from rest_framework_simplejwt.tokens import AccessToken
 from django.contrib.auth.models import AnonymousUser
+# chat/middleware.py (if needed)
+from channels.middleware import BaseMiddleware
 
+class CustomMiddleware(BaseMiddleware):
+    async def __call__(self, scope, receive, send):
+        # Handle WebSocket and HTTP requests
+        return await super().__call__(scope, receive, send)
 User = get_user_model()
 
 @database_sync_to_async
