@@ -26,8 +26,22 @@ class GlobalNotificationConsumer(AsyncJsonWebsocketConsumer):
 
 
 
-    async def receive(self, text_data=None, bytes_data=None, **kwargs):
-        pass
+    async def receive(self, text_data=None, **kwargs):
+        data = json.loads(text_data)
+        message = data.get("message", "")
+        await self.save_notification(self.user, message)
+
+        # Broadcast the message to the group
+        await self.channel_layer.group_send(
+            self.group_name,
+            {
+                "type": "send_notification",
+                "content": {
+                    "user": self.user.username,
+                    "message": message
+                }
+            }
+        )
         
     async def disconnect(self, close_code):
         if hasattr(self, 'group_name'):
@@ -37,8 +51,5 @@ class GlobalNotificationConsumer(AsyncJsonWebsocketConsumer):
             )
 
     async def send_notification(self, event):
-        try:
-            content = event.get("content", {})
-            await self.send_json(content)
-        except Exception as e:
-            print("Send error:", e)
+        content = event.get("content", {})
+        await self.send_json(content)

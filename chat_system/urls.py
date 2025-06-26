@@ -25,7 +25,7 @@ urlpatterns = [
     path('',include('chat.urls')),
     path('',include('notifications.urls')),
     path('',include('ai_intrigation.urls')),
-    path('',include('chatbot_intigration.urls')),
+    path('',include('chatbot_intigration.urls'))
     
 ]
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)  
